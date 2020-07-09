@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+{% if ticker %}
+{{ ticker }}
+{% endif %}
+
+{% if api %}
+{% if api == 'Error...' %}
+There was a problem. Please try again.
+{% else %}
+
+<h1>{{ api.quote.companyName }}</h1>
+
+Price: {{ api.quote.latestPrice }}<br />
+Market Cap: {{ api.quote.marketCap }}<br />
+Year-to-date Change: {{ api.quote.ytdChange }}<br />
+
+
+<!--{% for key, value in api.quote.items %}
+            {{ key }} : {{ value }} <br/>
+        {% endfor %}-->
+{% endif %}
+{% endif %}
+
+{% endblock %}
