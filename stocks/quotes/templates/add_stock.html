@@ -15,35 +15,39 @@
 
 {% if ticker %}
 
-<table class="table table-md table-bordered">
-  <tbody>
+  <table class="table table-md table-bordered">
+    <tbody>
 
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Company Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">Market Cap</th>
-        <th scope="col">Year-to-date Change</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Company Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Market Cap</th>
+          <th scope="col">Year-to-date Change</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
 
-    {% for item in ticker %}
-      <tr>
-        <th scope="row">{{ item }}</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><a class="btn btn-sm btn-danger" href="{% url 'delete' item.id %}">Delete</a></td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-
-
+     
+       
+      {% for list_item in output %}
+        <tr>
+          <th scope="row">{{ list_item.quote.symbol }}</th>
+          <td>{{ list_item.quote.companyName }}</td>
+          <td>${{ list_item.quote.latestPrice }}</td>
+          <td>${{ list_item.quote.marketCap }}</td>
+          <td>{{ list_item.quote.ytdChange }}%</td>
+          <td><a class="btn btn-sm btn-danger" href="/">Delete</a></td>
+        </tr>
+      {% endfor %}
+        
+     
+    </tbody>
+  </table>
 
 {% endif %}
+
 
 
 
